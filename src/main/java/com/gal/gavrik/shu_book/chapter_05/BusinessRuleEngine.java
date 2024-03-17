@@ -8,7 +8,10 @@ public class BusinessRuleEngine {
 
     private final List<Action> actions;
 
-    public BusinessRuleEngine() {
+    private final Facts facts;
+
+    public BusinessRuleEngine(final Facts facts) {
+        this.facts = facts;
         this.actions = new ArrayList<>();
     }
 
@@ -21,6 +24,6 @@ public class BusinessRuleEngine {
     }
 
     public void run() {
-        this.actions.forEach(Action::perform);
+        this.actions.forEach(action -> action.perform(facts));
     }
 }
