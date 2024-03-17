@@ -4,6 +4,8 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
+import static org.mockito.Mockito.*;
+
 public class BusinessRuleEngineTest {
 
     @Test
@@ -21,6 +23,15 @@ public class BusinessRuleEngineTest {
         businessRuleEngine.addAction(() -> {});
 
         assertEquals(2, businessRuleEngine.count());
+    }
 
+    @Test
+    public void shouldExecuteOneAction() {
+        final BusinessRuleEngine businessRuleEngine = new BusinessRuleEngine();
+        final Action mockAction = mock(Action.class);
+
+        businessRuleEngine.addAction(mockAction);
+        businessRuleEngine.run();
+        verify(mockAction).perform();
     }
 }

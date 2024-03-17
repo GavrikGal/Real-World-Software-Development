@@ -1,8 +1,8 @@
 package com.gal.gavrik.shu_book.chapter_05;
 
-
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class BusinessRuleEngine {
 
@@ -21,6 +21,6 @@ public class BusinessRuleEngine {
     }
 
     public void run() {
-        throw new UnsupportedOperationException();
+        this.actions.forEach(Action::perform);
     }
 }
